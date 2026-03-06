@@ -1,0 +1,5 @@
+# DSIPS Agent dependencies
+# The installer handles this automatically via venv.
+# Manual install: pip install -r requirements.txt
+
+aiohttp>=3.9.0
