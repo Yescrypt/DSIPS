@@ -214,4 +214,4 @@ Pull requests welcome. For major changes, open an issue first.
 
 ## 📄 License
 
-[MIT](LICENSE)
+<img src="https://cdn-icons-png.flaticon.com/256/1/1430.png" width="18"> [MIT](LICENSE)
