@@ -61,7 +61,7 @@ Your Linux Server                  Your Cloud API                 Your Telegram
 
 ```bash
 git clone https://github.com/Yescrypt/dsips.git
-cd DSIPS
+cd dsips
 sudo bash install.sh
 ```
 
