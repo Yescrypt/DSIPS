@@ -164,28 +164,23 @@ RE_XSS = re.compile(
 
 # TRAVERSAL — barcha usullar
 RE_TRAVERSAL = re.compile(
-    r"(\.\./|\.\.\\|"                          # ../  ..\
-    r"\.\.%2f|\.\.%5c|"                        # URL encode
-    r"\.\.%252f|\.\.%255c|"                    # Double encode
-    r"%2e%2e%2f|%2e%2e/|\.%2e/|%2e\./|"       # Mixed encode
-    r"%2e%2e%5c|%252e%252e|"                   # More encode
-    r"%c0%af|%c1%9c|%c0%2f|%c1%af|"           # Unicode bypass
-    r"\.{2,}[/\\]|"                            # ..../ ...../ (ko'p nuqta)
-    r"/{2,}\.{2,}/{1,}|"                       # //..// ....//
-    r"\.{2,}%2[fF]|"                           # ....%2f
+    r"(\.\./|\.\.\\|"
+    r"\.\.%2f|\.\.%5c|"
+    r"\.\.%252f|\.\.%255c|"
+    r"%2e%2e%2f|%2e%2e/|\.%2e/|%2e\./|"
+    r"%2e%2e%5c|%252e%252e|"
+    r"%c0%af|%c1%9c|%c0%2f|%c1%af|"
+    r"\.{2,}/|"
     r"/etc/passwd|/etc/shadow|/etc/hosts|"
     r"/etc/group|/etc/crontab|/etc/fstab|"
     r"/etc/ssh/|/etc/nginx/|/etc/apache|"
     r"/proc/self|/proc/version|/proc/cmdline|/proc/environ|"
-    r"/var/log/|/var/www/|/home/\w+/\.|"
     r"\.htaccess|\.htpasswd|\.env|\.git/|\.svn/|"
-    r"\.bash_history|\.ssh/|id_rsa|authorized_keys|"
+    r"\.bash_history|authorized_keys|"
     r"/boot\.ini|c:\\windows|c:/windows|"
-    r"win\.ini|system32|cmd\.exe|"
-    r"WEB-INF|web\.xml|applicationContext|"
-    r"wp-config\.php|config\.php|database\.php|"
-    r"settings\.py|config\.yml|config\.yaml|"
-    r"\.DS_Store|Thumbs\.db)",
+    r"WEB-INF|web\.xml|"
+    r"wp-config\.php|"
+    r"\.DS_Store)",
     re.IGNORECASE,
 )
 
@@ -212,18 +207,16 @@ RE_RCE = re.compile(
 )
 
 RE_LFI = re.compile(
-    r"(php://filter|php://input|php://stdin|php://output|"
-    r"php://fd|php://memory|php://temp|"
+    r"(php://filter|php://input|php://stdin|"
     r"data://|data:text/|expect://|phar://|zip://|"
-    r"glob://|ogg://|zlib://|"
-    r"(?:file|page|include|path|doc|template|"
-    r"load|read|fetch|display|show|view|"
-    r"content|module|conf|cfg|lang|language|"
-    r"dir|folder|layout|theme|skin|style)="
-    r"(?:\.{2,}[/\\]|%2e%2e|%252e|/etc/|/proc/|/var/)|"
-    r"(?:file|page|include|path|doc|template|"
-    r"load|read|fetch|display|show|view)="
-    r"(?:https?://|ftp://|smb://|dict://)",
+    r"glob://|zlib://|"
+    r"file=\.{2,}[/\\]|page=\.{2,}[/\\]|include=\.{2,}[/\\]|"
+    r"path=\.{2,}[/\\]|doc=\.{2,}[/\\]|template=\.{2,}[/\\]|"
+    r"load=\.{2,}[/\\]|read=\.{2,}[/\\]|fetch=\.{2,}[/\\]|"
+    r"display=\.{2,}[/\\]|show=\.{2,}[/\\]|view=\.{2,}[/\\]|"
+    r"file=.*%2e%2e|page=.*%2e%2e|include=.*%2e%2e|"
+    r"file=https?://|page=https?://|include=https?://|"
+    r"load=https?://|fetch=https?://)",
     re.IGNORECASE,
 )
 
